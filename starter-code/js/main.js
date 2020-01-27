@@ -43,9 +43,29 @@ window.addEventListener('load', event => {
   document.querySelectorAll('.card').forEach(card => {
     card.addEventListener('click', () => {
       // TODO: write some code here
+      if (memoryGame.pickedCards.length <= 1) {
+        card.classList.add('turned');
+        memoryGame.pickedCards.push(card);
+      } else {
+        let isPair = memoryGame.checkIfPair(memoryGame.pickedCards[0], memoryGame.pickedCards[1]);
+        if (!isPair) {
+          memoryGame.pickedCards[0].classList.remove('turned');
+          memoryGame.pickedCards[1].classList.remove('turned');
+          memoryGame.pickedCards = [];
+        } else {
+          memoryGame.pickedCards = [];
+        }
+      }
 
-      card.classList.add('turned');
-      console.log('Card clicked: ', card);
+      //console.log('Card clicked: ', card);
+      //if (memoryGame.pickedCards.length === 2) {
+      //  if (memoryGame.checkIfPair(memoryGame.pickedCards[0], memoryGame.pickedCards[1])) {
+      //    console.log(memoryGame.pickedCards);
+      // } else {
+      //   memoryGame.pickedCards[0].classList.remove('turned');
+      //          memoryGame.pickedCards[1].classList.remove('turned');
+      //      }
+      //    }
     });
   });
 });

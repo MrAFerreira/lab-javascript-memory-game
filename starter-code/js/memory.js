@@ -26,10 +26,16 @@ class MemoryGame {
   checkIfPair(card1, card2) {
     // ...
     this.pairsClicked += 1;
+    let $pairsClickedSpan = document.getElementById('pairs_clicked');
+    $pairsClickedSpan.innerText = this.pairsClicked;
+    let $pairsGuessedSpan = document.getElementById('pairs_guessed');
+
     if (card1 === card2) {
       this.pairsGuessed += 1;
+      $pairsGuessedSpan.innerText = this.pairsGuessed;
       return true;
     }
+    //this.pickedCards = [];
     return false;
   }
 
